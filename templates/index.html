@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sonar Object Classifier</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f2f2f2; padding: 30px; }
+        h2, h3 { color: #333; }
+        input[type=text] { width: 60px; padding: 5px; margin: 5px; }
+        input[type=submit] { padding: 10px 20px; margin-top: 20px; }
+        .form-block { margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <h2>🔍 Sonar Signal Classifier</h2>
+
+    <div class="form-block">
+        <h3>Manual Entry (60 values)</h3>
+        <form method="POST" action="/predict">
+            {% for i in range(60) %}
+                <input type="text" name="{{ i }}" placeholder="F{{ i+1 }}">
+                {% if (i+1) % 10 == 0 %}<br>{% endif %}
+            {% endfor %}
+            <br>
+            <input type="submit" value="Predict">
+        </form>
+        <h3>{{ prediction_text }}</h3>
+    </div>
+
+    <div class="form-block">
+        <h3>📁 Upload CSV File (60 columns)</h3>
+        <form action="/predict_csv" method="POST" enctype="multipart/form-data">
+            <input type="file" name="csv_file">
+            <input type="submit" value="Upload and Predict">
+        </form>
+        <br>
+        {{ prediction_table|safe }}
+    </div>
+</body>
+</html>
