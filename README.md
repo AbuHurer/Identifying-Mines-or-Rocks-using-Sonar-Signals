@@ -1,5 +1,5 @@
 # 🧠 Mine or Rock Prediction Web App
-
+ 
 This project is a full-stack web application that classifies **sonar signals** as either **Mines** or **Rocks** using a machine learning model. The app consists of:
 
 - 🔙 A Flask backend with a trained ML model
